@@ -50,7 +50,7 @@ def validate_data(values):
     return True
 def update_sales_worksheet(data):
     """
-    Updates data in the sales worksheet by adding a neu row with the list data provided
+    Updates data in the sales worksheet by adding a neu row with the last data provided
     """
     print("Updating sales worksheet...\n")
     sales_worksheet = SHEET.worksheet("sales")
@@ -74,6 +74,17 @@ def calculate_surplus_data(sales_row):
         surplus_data.append(surplus)
 
     return surplus_data
+
+def update_surplus_worksheet(data):
+    """
+    Updates data in the surplus worksheet by adding a neu row with the data provided
+    """
+    print("Updating surplus worksheet...\n")
+    surplus_worksheet = SHEET.worksheet("surplus")
+    surplus_worksheet.append_row(data)
+    print("Surplus worksheet updated successfly. \n")
+
+
 def main():
     """
     Run all program functions
@@ -82,7 +93,7 @@ def main():
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
     new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
-print("Welcome to Love Sandwiches Data Aumonation")
+print("Welcome to Love Sandwiches Data Automation")
 main()
